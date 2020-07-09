@@ -38,7 +38,7 @@ We wanted to share some details with you to get you started:
 
 **Pre-requisites**
 
-1.   As shared earlier, there are no prerequisites on the AI/ML concepts, but it is expected that you know basic Python. 
+1.   As shared earlier, there are no prerequisites on the AI/ML concepts, but it is expected that you know basic Python... 
 
 2.   To clear what basic is expected, please take a look at these two files:
 
