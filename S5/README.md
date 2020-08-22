@@ -4,7 +4,7 @@
 Canvas name| email id |
 ---|---|
 Thamizhannal| <>
-Vikas| vikasmech.nitK@gmail.com|
+Vikas| vikasmech.nitk@gmail.com|
 Raga Asritha| ragaashritha@gmail.com|
 Pranava Sai| pranavbalasankula@gmail.com|
 
