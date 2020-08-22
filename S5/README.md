@@ -19,7 +19,7 @@ Basic architecture with good potential
 3. Best Test Accuracy: 98.86%
 
 ### Analysis:
-1. Model seems to show promise with Highest Train and Test accuracy not differing much.
+1. Model seems to show promise with highest Train and Test accuracy not differing much.
 2. Slight Over-fitting in my opinion as Train accuracy is increasing with epochs but Test accuracy got stagnent after 6-7 epochs
 3. Need to decrease the number of parameters as well.
 --------
@@ -48,7 +48,7 @@ Decrease the parameters in the first 2 layers and add a 1x1 post GAP. Reach 99.4
 3. Best Test Accuracy: 99.48%
 
 ### Analysis:
-1. Image agumentation works as good regularization
+1. Image augmentation works as good regularization
 2. 64 batch size showcases better performance than 32, 64, 128, 256
 3. Model takes more time to converge with LR - 0.01 and was able to reaach > 99.4% accuracy only once in 14th epoch.
 4. Adding more regularisation can make the model robust and perform consistently on test data.
