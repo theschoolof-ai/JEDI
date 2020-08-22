@@ -3,7 +3,7 @@
 **Team members:**
 Canvas name| email id |
 ---|---|
-Thamiz| <>
+Thamizhannal| <>
 Vikas| vikasmech.nitK@gmail.com|
 Raga Asritha| ragaashritha@gmail.com|
 Pranava Sai| pranavbalasankula@gmail.com|
