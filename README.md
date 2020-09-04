@@ -1,10 +1,10 @@
-# JEDI
+# JEDI GROUP
 
 ***Extensive Vision AI Program***
 
 Probably the most exhaustive and updated Deep Vision Program in the world! It is spread over three semester-style phases, each restricted by a qualifying exam.
 
-**PHASE #1 - FUNDAMENTALS** 
+**PHASE #1 - FUNDAMENTALS**
 
 | Background & Basics*: Machine Learning Intuition             |
 | :----------------------------------------------------------- |
