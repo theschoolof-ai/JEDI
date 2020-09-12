@@ -29,18 +29,13 @@ Reached 80% of validation accuracy  in 20th epoch and it is consistent in next c
 ### Analysis:
 
 1. Dropout added the necessary regularization required to make model robust
-2. Though increased LR was helping in fast convergence but after 5-6 epochs it would tapper off implying a need for smaller LR so used a step LR schedule at after 4 epochs and decreased it to 0.8 times the previous LR
-
+2. Also Image augumentation & GBN techniques helped to increase validation accuracy.
 ### All the changes added to the base CNN architechture to acheive the target accuracy
 
 1. Input image normalization
 2. Image augmentation - rotation for Train data
 3. Batch Normalization
 4. Dropouts
-5. LR scheduler
-6. GAP
-7. 
-
-#### Conclusion:
-
-We have implemented eva5-jedi project that consist of necessary packages to build Deep Network for CIFAR10. 
+5. Convolition, Depthwise separable convolution, Dilated convolution
+6. LR scheduler
+7. GAP
