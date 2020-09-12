@@ -13,8 +13,7 @@ Pranava Sai| pranavbalasankula@gmail.com|
 
 We have created a eva5-jedi project and exported it as open source https://test.pypi.org/project/eva5-jedi/0.0.1/
 
-Refer to tsai.jedi section of S7 folder if you need to refer to the contents of the package
-
+Refer to [tsai.jedi](https://github.com/theschoolof-ai/JEDI/tree/master/S7/tsai.jedi) section of S7 folder if you need to refer to the contents of the package
 It consist of following modules
 
 - **batchnorm.py:** GBN implementation, depthwise convolution implementation
