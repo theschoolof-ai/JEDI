@@ -4,7 +4,7 @@ We have created a eva5-jedi project and exported it as open source https://test.
 
 It consist of following modules
 
-- **batchnorm.py:** GBN implementation
+- **batchnorm.py:** GBN implementation, depthwise convolution implementation
 - **dataloader.py:** - train and test data loader
 - **Engine_train_test.py:** - train and test functions
 - **model.py:** Architecture creation and view
