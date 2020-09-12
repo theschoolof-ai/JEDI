@@ -1,6 +1,19 @@
+# JEDI GROUP
+
+**Team members:**
+Canvas name| email id |
+---|---|
+Thamizhannal| annalwins@gmail.com|
+Vikas Kumar| vikasmech.nitk@gmail.com|
+Raga Ashritha| ragaashritha@gmail.com|
+Pranava Sai| pranavbalasankula@gmail.com|
+
+
 ## Modular Implementation
 
 We have created a eva5-jedi project and exported it as open source https://test.pypi.org/project/eva5-jedi/0.0.1/
+
+Refer to tsai.jedi section of S7 folder if you need to refer to the contents of the package
 
 It consist of following modules
 
@@ -8,7 +21,7 @@ It consist of following modules
 - **dataloader.py:** - train and test data loader
 - **Engine_train_test.py:** - train and test functions
 - **model.py:** Architecture creation and view
-- **config.py:** parameters needs to set to run the following main file. Will be adding further to config when notebook would be created
+- **config.py:** parameters needed to run the main or colab notebook
 
 
 
