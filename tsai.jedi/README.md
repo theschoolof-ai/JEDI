@@ -5,4 +5,4 @@
 - **Engine_train_test.py:** - train and test functions 
 - **model/:** Folder for architecture creation and view for every session
 - **config.py:** parameters needs to set to run the following main file. Will be adding further to config when notebook would be created
-- **model_objects**: Folder for saving models
+- **model_objects/**: Folder for saving models
