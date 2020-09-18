@@ -6,4 +6,4 @@ batch_size = 128
 num_workers = 1
 pin_memory = True
 input_size_MNIST = (1, 28, 28)
-input_size_CIFAR10 = (1, 32, 32)
+input_size_CIFAR10 = (3, 32, 32)
