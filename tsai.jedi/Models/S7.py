@@ -3,7 +3,7 @@ import sys
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-sys.path.append(".")
+sys.path.append('tsai.jedi')
 from batchnorm import GhostBatchNorm
 import config
 
