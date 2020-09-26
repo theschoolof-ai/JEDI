@@ -8,4 +8,4 @@
 - **model_objects/**: Folder for saving trained models
 - **datatransforms:** Training and testing transformations. Albumentation transformation can be observed in this module
 - **gradcam** - Implementation to generate and view gradcam of images
-
+- **aftereffects** - Module with implementations like viewing misclassified or correctly classified images, Image plot generators e.t.c which are useful post training model
