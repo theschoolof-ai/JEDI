@@ -38,6 +38,7 @@ def train(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0
     print('Epoch: {:.0f},LR: {}.\nTrain set: train Average loss: {:.4f}, train_Accuracy: {}/{} ({:.4f}%)\n'.format(
         epoch, optimizer.param_groups[0]['lr'], train_loss, train_correct, len(train_loader.dataset),
         100. * train_correct / len(train_loader.dataset)))
+    return 100. * train_correct / len(train_loader.dataset), train_loss
 
 
 def test(model, device, test_loader):
