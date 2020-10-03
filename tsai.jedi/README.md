@@ -9,3 +9,4 @@
 - **grad_cam.py**: Gradcam implementations
 - **aftereffects.py**: Post Model plots and data extractions
 - **lr_finder.py**: Implementation to find best LR for the model
+- **datatransforms.py**: Albumentation implementation with Cutout also
