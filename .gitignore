@@ -2,3 +2,8 @@
 data/
 eva5_s7/
 wip.py
+main.py
+__pycache__/
+EVA5_s9_mynotebook.ipynb
+s10.ipynb
+Models/main.py

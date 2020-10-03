@@ -5,11 +5,12 @@ from dataloader import classes_CIFAR10
 import numpy as np
 
 
-def get_image_with_target(model_path, number_of_img, dataloader, return_torch=False):
+def get_image_with_target(model_path, number_of_img, dataloader, return_torch='nontorch', is_classified=True):
     import numpy as np
     model = torch.load(model_path)
     model.eval()
     tot = 0
+    target_np = []
     data_ = []
     target_ = []
     pred_ = []
@@ -25,28 +26,30 @@ def get_image_with_target(model_path, number_of_img, dataloader, return_torch=Fa
         equals = pred.eq(target.view_as(pred)).tolist()
 
         for idx in range(0, len(equals)):
-            if equals[idx] == [True]:
+            if equals[idx] == [is_classified]:
                 indx.append(idx)
                 img = data[idx].cpu()
                 img = img.numpy()
                 data_.append(img.transpose(1, 2, 0))
-                target_.append(target[idx])
-                pred_.append(pred[idx])
+                target_.append(target[idx].cpu().data.numpy())
+                pred_.append(pred[idx][0].cpu().data.numpy())
+
 
         if len(indx) > number_of_img:
-            if return_torch:
-                return torch.tensor(data_[:number_of_img]), torch.tensor(target_[:number_of_img]), torch.tensor(
-                    pred_[:number_of_img])
-            else:
+            if return_torch == 'Both':
+                return torch.tensor(data_[:number_of_img]), torch.from_numpy(np.array(target_[:number_of_img], dtype=np.int)), torch.from_numpy(np.array(pred_[:number_of_img], dtype=np.int)), data_[:number_of_img], target_[:number_of_img], pred_[:number_of_img]
+            elif return_torch == 'torch':
+                return torch.tensor(data_[:number_of_img]), torch.from_numpy(np.array(target_[:number_of_img], dtype=np.int)), torch.from_numpy(np.array(pred_[:number_of_img], dtype=np.int))
+            elif return_torch == 'nontorch':
                 return data_[:number_of_img], target_[:number_of_img], pred_[:number_of_img]
 
 
-def plots(ims, figsize=(8, 8), rows=2, interp=False, titles=None, class_names=classes_CIFAR10):
+def plots(ims, figsize=(15, 15), rows=5, interp=False, titles=None, class_names=classes_CIFAR10):
     f = plt.figure(figsize=figsize)
-    cols = len(ims) // rows if len(ims) % 2 == 0 else len(ims) // rows + 1
+    cols = len(ims) // rows if len(ims) % 2 == 0 else len(ims) // rows +1
     for i in range(len(ims)):
         sp = f.add_subplot(rows, cols, i + 1)
         if titles is not None:
-            sp.set_title(class_names[titles[i]], fontsize=16)
+            sp.set_title(titles[i], fontsize=16)
         sp.axis('Off')
         plt.imshow(ims[i])

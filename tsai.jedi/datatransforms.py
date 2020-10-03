@@ -15,6 +15,7 @@ class train_transform_alb(Dataset):
             A.RandomCrop(32, 32, p=0.5),
             A.HorizontalFlip(p=0.5),
             A.Rotate((-8.0, 8.0), p=0.5),
+            A.Cutout(num_holes=8,  max_h_size=8, max_w_size=8, fill_value=[0.4914, 0.4822, 0.4465], p=0.5),# fill_value=[0.4914, 0.4822, 0.4465]
             A.Normalize(mean=(0.4914, 0.4822, 0.4465), std=(0.2023, 0.1994, 0.2010))
         ])
 
