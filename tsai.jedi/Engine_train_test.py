@@ -32,6 +32,7 @@ def train(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0
 
         train_loss.backward()
         optimizer.step()
+
         pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
         train_correct += pred.eq(target.view_as(pred)).sum().item()
         pbar.set_description(desc=f'loss={train_loss.item()} batch_id={batch_idx}')
