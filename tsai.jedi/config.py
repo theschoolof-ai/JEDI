@@ -2,7 +2,8 @@ import torch
 
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
-batch_size = 128
+#batch_size is 128 for S6-S10
+batch_size = 512
 num_workers = 0
 pin_memory = True
 input_size_MNIST = (1, 28, 28)

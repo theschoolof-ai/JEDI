@@ -9,6 +9,7 @@ train_loss = 0
 
 criterion = nn.CrossEntropyLoss()
 
+
 def train(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0.001]):
     model.train()
     train_correct = 0
@@ -31,6 +32,42 @@ def train(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0
 
         train_loss.backward()
         optimizer.step()
+        pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
+        train_correct += pred.eq(target.view_as(pred)).sum().item()
+        pbar.set_description(desc=f'loss={train_loss.item()} batch_id={batch_idx}')
+
+    print('Epoch: {:.0f},LR: {}.\nTrain set: train Average loss: {:.4f}, train_Accuracy: {}/{} ({:.4f}%)\n'.format(
+        epoch, optimizer.param_groups[0]['lr'], train_loss, train_correct, len(train_loader.dataset),
+        100. * train_correct / len(train_loader.dataset)))
+    return 100. * train_correct / len(train_loader.dataset), train_loss
+
+
+def train_cyclic(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0.001], is_cyclicLR=False,
+                 scheduler=None):
+    model.train()
+    train_correct = 0
+    train_loss = 0
+    type = l1_regularization[0]
+    l = l1_regularization[1]
+    pbar = tqdm(train_loader, leave=False, position=0)
+    for batch_idx, (data, target) in enumerate(pbar):
+        data, target = data.to(device), target.to(device)
+        output = model(data)
+        optimizer.zero_grad()
+
+        if type == 1:
+            l1_regularization = 0
+            for param in model.parameters():
+                l1_regularization += torch.sum(abs(param))
+            train_loss = criterion(output, target) + l * l1_regularization
+        else:
+            train_loss = criterion(output, target)
+
+        train_loss.backward()
+        optimizer.step()
+        if is_cyclicLR:
+            scheduler.step()
+
         pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
         train_correct += pred.eq(target.view_as(pred)).sum().item()
         pbar.set_description(desc=f'loss={train_loss.item()} batch_id={batch_idx}')

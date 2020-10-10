@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pickle
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
-from datatransforms import train_transform_alb, test_transform_alb
+from datatransforms import train_transform_alb, test_transform_alb, train_transform_s11
 import config
 
 torch.manual_seed(1)
@@ -92,9 +92,14 @@ classes_CIFAR10 = ('plane', 'car', 'bird', 'cat',
 
 trainset = train_transform_alb(image_list=X_train, label=Y_train)
 testset = test_transform_alb(image_list=X_test, label=Y_test)
+trainset_s11 = train_transform_s11(image_list=X_train, label=Y_train)
 
 train_loader_CIFAR10_alb = torch.utils.data.DataLoader(trainset,
                                                    batch_size=config.batch_size, shuffle=True, **kwargs)
 
 test_loader_CIFAR10_alb = torch.utils.data.DataLoader(testset,
                                                   batch_size=config.batch_size, shuffle=True, **kwargs)
+
+
+train_loader_CIFAR10_s11 = torch.utils.data.DataLoader(trainset_s11,
+                                                   batch_size=config.batch_size, shuffle=True, **kwargs)
