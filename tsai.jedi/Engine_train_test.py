@@ -9,7 +9,7 @@ train_loss = 0
 
 criterion = nn.CrossEntropyLoss()
 
-def train(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0.001]):
+def train(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0.001],OneCycle=True, scheduler):
     model.train()
     train_correct = 0
     train_loss = 0
@@ -31,6 +31,8 @@ def train(model, device, train_loader, optimizer, epoch, l1_regularization=[1, 0
 
         train_loss.backward()
         optimizer.step()
+        if OneCycle:
+            scheduler.step()
         pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
         train_correct += pred.eq(target.view_as(pred)).sum().item()
         pbar.set_description(desc=f'loss={train_loss.item()} batch_id={batch_idx}')
