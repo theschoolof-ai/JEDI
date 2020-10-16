@@ -1,5 +1,10 @@
 .idea/
 data/
+data/cifar-10-batches-py/
+data/MNIST/
+data/tiny-imagenet-200.zip
+data/cifar-10-python.tar.gz
+data/s12/
 eva5_s7/
 wip.py
 main.py
