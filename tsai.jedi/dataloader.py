@@ -1,6 +1,7 @@
 import sys
+
 sys.path.append("tsai.jedi")
-#from __future__ import print_function
+# from __future__ import print_function
 import torch
 from torchvision import datasets, transforms
 import numpy as np
@@ -9,16 +10,18 @@ import matplotlib.pyplot as plt
 import pickle
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
-from datatransforms import train_transform_alb, test_transform_alb, train_transform_s11, train_transform_tinyimagenet, test_transform_tinyimagenet
+from datatransforms import train_transform_alb, test_transform_alb, train_transform_s11, train_transform_tinyimagenet, \
+    test_transform_tinyimagenet
 import config
 import time
 import cv2
 import PIL
+import sklearn
 
 torch.manual_seed(1)
 kwargs = {'num_workers': config.num_workers, 'pin_memory': config.pin_memory} if config.use_cuda else {}
 
-#MNIST
+# MNIST
 train_loader_MNIST = torch.utils.data.DataLoader(
     datasets.MNIST('../data', train=True, download=True,
                    transform=transforms.Compose([
@@ -33,7 +36,7 @@ test_loader_MNIST = torch.utils.data.DataLoader(
         transforms.Normalize((0.1307,), (0.3081,))
     ])),
     batch_size=config.batch_size, shuffle=True, **kwargs)
-#CIFAR10
+# CIFAR10
 train_loader_CIFAR10 = torch.utils.data.DataLoader(
     datasets.CIFAR10('../data', train=True, download=True,
                      transform=transforms.Compose([
@@ -51,7 +54,7 @@ test_loader_CIFAR10 = torch.utils.data.DataLoader(
     ])),
     batch_size=config.batch_size, shuffle=True, **kwargs)
 
-#CIFAR-10 Albumentation
+# CIFAR-10 Albumentation
 datasets.CIFAR10('../data', train=True, download=True)
 
 
@@ -98,24 +101,25 @@ testset = test_transform_alb(image_list=X_test, label=Y_test)
 trainset_s11 = train_transform_s11(image_list=X_train, label=Y_train)
 
 train_loader_CIFAR10_alb = torch.utils.data.DataLoader(trainset,
-                                                   batch_size=config.batch_size, shuffle=True, **kwargs)
+                                                       batch_size=config.batch_size, shuffle=True, **kwargs)
 
 test_loader_CIFAR10_alb = torch.utils.data.DataLoader(testset,
-                                                  batch_size=config.batch_size, shuffle=True, **kwargs)
-
+                                                      batch_size=config.batch_size, shuffle=True, **kwargs)
 
 train_loader_CIFAR10_s11 = torch.utils.data.DataLoader(trainset_s11,
-                                                   batch_size=config.batch_size, shuffle=True, **kwargs)
+                                                       batch_size=config.batch_size, shuffle=True, **kwargs)
+
 
 ###TinyImagenet
-def get_id_dictionary():
+
+def get_id_dictionary(path):
     id_dict = {}
     for i, line in enumerate(open(path + 'wnids.txt', 'r')):
         id_dict[line.replace('\n', '')] = i
     return id_dict
 
 
-def get_class_to_id_dict():
+def get_class_to_id_dict(path):
     id_dict = get_id_dictionary()
     all_classes = {}
     result = {}
@@ -127,7 +131,7 @@ def get_class_to_id_dict():
     return result
 
 
-def get_data(id_dict):
+def get_data(id_dict, path):
     print('starting loading data')
     train_data, test_data = [], []
     train_labels, test_labels = [], []
@@ -148,11 +152,26 @@ def get_data(id_dict):
     print('finished loading data, in {} seconds'.format(time.time() - t))
     return np.array(train_data), np.array(train_labels), np.array(test_data), np.array(test_labels)
 
-train_data, train_labels, test_data, test_labels = get_data(get_id_dictionary())
 
-trainset_tiny = train_transform_tinyimagenet(image_list=train_data, label=train_labels)
-train_loader_tinyimgnet_s12 = torch.utils.data.DataLoader(trainset_tiny,
-                                                   batch_size=config.batch_size, shuffle=True, **kwargs)
-testset_tiny = test_transform_tinyimagenet(image_list=test_data, label=test_labels)
-test_loader_tinyimgnet_s12 = torch.utils.data.DataLoader(testset_tiny,
-                                                  batch_size=config.batch_size, shuffle=True, **kwargs)
+train_data, train_labels, test_data, test_labels = get_data(get_id_dictionary(path=config.imagenet_path),
+                                                            path=config.imagenet_path)
+
+total_data = np.concatenate((train_data, test_data), axis=0)
+total_labels = np.concatenate((train_labels, test_labels), axis=0)
+
+from sklearn.model_selection import train_test_split
+
+train_data, test_data, train_labels, test_labels = train_test_split(total_data, total_labels, test_size=0.30,
+                                                                    random_state=42)
+
+train_labels = train_labels.argmax(axis=1)
+test_labels = test_labels.argmax(axis=1)
+
+trainset = train_transform_tinyimagenet(image_list=train_data, label=train_labels)
+train_loader_tinyimgnet_s12 = torch.utils.data.DataLoader(trainset,
+                                                          batch_size=config.batch_size, shuffle=True, **kwargs)
+testset = test_transform_tinyimagenet(image_list=test_data, label=test_labels)
+test_loader_tinyimgnet_s12 = torch.utils.data.DataLoader(testset,
+                                                         batch_size=config.batch_size, shuffle=True, **kwargs)
+
+del train_data, train_labels, test_data, test_labels, testset, trainset, total_labels, total_data
