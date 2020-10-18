@@ -1,4 +1,14 @@
-Exaplanation of the json file
+# JEDI GROUP
+
+**Team members:**
+Canvas name| email id |
+---|---|
+Thamizhannal| annalwins@gmail.com|
+Vikas Kumar| vikasmech.nitk@gmail.com|
+Raga Ashritha| ragaashritha@gmail.com|
+Pranava Sai| pranavbalasankula@gmail.com|
+
+## Exaplanation of the json file ##
 
 The JSON file is basically a Key: Value pair dumped in a text format
 The root key is the image_name and the value is attributes like 
