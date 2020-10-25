@@ -13,8 +13,9 @@ Pranava Sai| pranavbalasankula@gmail.com|
 
 
 # Assignment 13b
-- **yolo annotation example of PPE kit image**
+**yolo annotation example of PPE kit image**
+
 ![Image](https://github.com/theschoolof-ai/JEDI/blob/master/S13/13b_annotated_image.png)
 
-- **Annotated Video**
+**Annotated Video**
 ![Youtube link](https://youtu.be/ki6Py13JCEA)
