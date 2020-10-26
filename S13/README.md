@@ -11,6 +11,7 @@ Pranava Sai| pranavbalasankula@gmail.com|
 # Assignment 13a - opencv yolo annotation
 ![Image](https://github.com/theschoolof-ai/JEDI/blob/master/S13/S13a_annotated_img.png) 
 
+![Image](https://github.com/theschoolof-ai/JEDI/blob/master/S13/S13a_yolov3_opencv_annotated_img.png)
 
 # Assignment 13b
 **yolo annotation example of PPE kit image**
