@@ -1,5 +1,13 @@
 # JEDI GROUP
 
+**Team members:**
+Canvas name| email id |
+---|---|
+Thamizhannal| annalwins@gmail.com|
+Vikas Kumar| vikasmech.nitk@gmail.com|
+Raga Ashritha| ragaashritha@gmail.com|
+Pranava Sai| pranavbalasankula@gmail.com|
+
 ***Extensive Vision AI Program***
 
 Probably the most exhaustive and updated Deep Vision Program in the world! It is spread over three semester-style phases, each restricted by a qualifying exam.
