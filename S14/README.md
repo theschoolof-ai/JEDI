@@ -19,12 +19,12 @@ This the data of images regarding the PPE kit, primarily for construction worker
 file name| description|
 ---|---|
 images| Input images that are untouched|
-labels| contains 1 .txt file per image with inforamtion of class cx(bounding box centre) cy(bounding box centre) h(ratio to reduce anchor box height) w(ratio to reduce anchor box width) |
+labels| contains 1 .txt file per image with information of class cx(bounding box centre) cy(bounding box centre) h(ratio to reduce anchor box height) w(ratio to reduce anchor box width) |
 train.txt, test.txt|text files with location of training and text images respectively|
 train.shapes, test.shapes|text files with shapes of training and text images respectively|
 custom.data|File describing the number of classes and local to train.txt and test.txt|
 custom.names| text file with class label descriptions|
-midas_out_colormap|Images which have depth inforamtion of every image from the images folder on a colourful scale|
-midas_out_greyscale|Images which have depth inforamtion of every image from the images folder on a grey scale|
-plane_rcnn_inference|Images which have plane segmentation inforamtion of every image from the images folder|
+midas_out_colormap|Images which have depth information of every image from the images folder on a colourful scale|
+midas_out_greyscale|Images which have depth information of every image from the images folder on a grey scale|
+plane_rcnn_inference|Images which have plane segmentation information of every image from the images folder|
 
