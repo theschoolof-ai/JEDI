@@ -24,7 +24,7 @@ train.txt, test.txt|text files with location of training and text images respect
 train.shapes, test.shapes|text files with shapes of training and text images respectively|
 custom.data|File describing the number of classes and local to train.txt and test.txt|
 custom.names| text file with class label descriptions|
-midas_out_colormap|Images which have depth information of every image from the images folder on a colourful scale|
-midas_out_greyscale|Images which have depth information of every image from the images folder on a grey scale|
-plane_rcnn_inference|Images which have plane segmentation information of every image from the images folder|
+midas_out_colormap|Images which have depth information of every image from the images folder on a colourful scale. Implemented from the repo: [MiDas](https://github.com/intel-isl/MiDaS) using the colab file: [assign_14a](https://github.com/theschoolof-ai/JEDI/blob/master/S14/Session14_MiDas.ipynb)|
+midas_out_greyscale|Images which have depth information of every image from the images folder on a grey scale. Implemented from the repo: [MiDas](https://github.com/intel-isl/MiDaS) using the colab file: [assign_14a](https://github.com/theschoolof-ai/JEDI/blob/master/S14/Session14_MiDas.ipynb)|
+plane_rcnn_inference|Images which have plane segmentation information of every image from the images folder. PlaneR-CNN, that detects arbitrary number of planes, and reconstructs piecewise planar surfaces from a single RGB image was implemented from the repo: [planercnn](https://github.com/NVlabs/planercnn) using the following colab file: [assign_14b](https://github.com/theschoolof-ai/JEDI/blob/master/S14/assignment_EVA5_JEDI_14b.ipynb)|
 
